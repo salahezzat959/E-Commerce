@@ -1,0 +1,24 @@
+<section class="w-full   py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-10"> Our Trusted Brands</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (brand of brands(); track brand._id) {
+        <a
+
+          class="group bg-white/70 backdrop-blur-md rounded-xl shadow-md hover:shadow-lg transition-all p-4 flex flex-col items-center justify-center hover:bg-green-100"
+        >
+          <div class="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center overflow-hidden rounded-full border border-green-300 shadow-sm">
+            <img
+              [src]="brand.image"
+              [alt]="brand.name"
+              class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            >
+          </div>
+          <span class="mt-4 text-sm font-semibold  group-hover:text-green-900">{{ brand.name }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+

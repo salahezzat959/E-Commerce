@@ -1,0 +1,103 @@
+
+<!-- * main slider  -->
+<section>
+  <div class="grid grid-cols-1 md:grid-cols-[70%_minmax(0,1fr)] gap-1 overflow-hidden">
+
+    <!-- Main Slider -->
+    <div class="child-1">
+      <owl-carousel-o [options]="customMainSlider">
+        <ng-template carouselSlide>
+          <img src="/images/slider-image-3.jpeg" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img1.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img2.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img3.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img4.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img5.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img6.avif" class="w-full h-[200px] md:h-[300px] object-cover" alt="">
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <!-- Side Images -->
+    <div class="child-2 flex flex-col gap-1">
+      <img src="/images/slider-image-2.jpeg" class="w-full h-[100px] md:h-[150px] object-cover" alt="">
+      <img src="/images/slider-image-1.jpeg" class="w-full h-[100px] md:h-[150px] object-cover" alt="">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- * Categories slider  -->
+
+<section>
+  <h2 class="font-bold py-4">Popular Categories</h2>
+  <owl-carousel-o [options]="customOptions">
+    @for (cat of categories(); track cat._id) {
+      <ng-template carouselSlide [id]="cat._id">
+        <div>
+          <img [src]="cat.image" class="w-full h-[250px]" [alt]="cat.name">
+          <h3 class="text-gray-900 text-center"> {{cat.name}}</h3>
+        </div>
+      </ng-template>
+    }
+  </owl-carousel-o>
+</section>
+
+<!--*  Product Display  -->
+
+<section>
+  <h2 class="text-3xl pb-3">Popular Products</h2>
+<!--  Search Bar Start -->
+  <div class="max-w-xl mx-auto mb-10">
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+      </div>
+      <input [(ngModel)]="term" type="search" id="product-search"
+        class="block w-full pl-10 pr-4 py-3 text-base text-gray-900 border border-green-300 rounded-lg bg-white shadow-sm focus:ring-green-500 focus:border-green-500 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:focus:ring-green-500 dark:focus:border-green-500 transition"
+        placeholder="Search products, brands, categories..." />
+    </div>
+  </div>
+<!--  Search Bar End -->
+
+
+  <div class=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+    @for (prod of products().slice(0,20) | search :term ; track prod.id) {
+    <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
+          <div [routerLink]="['/details',prod.id]">
+                  <div class="card-img">
+                  <img [src]="prod.imageCover" class="w-full h-[250px] object-contain" [alt]="prod.title">
+                </div>
+                <div class="card-body px-2 py-4">
+                  <h4 class="text-green-500 text-xs">{{ prod.category.name |uppercase}}</h4>
+                  <h5 class="font-medium"> {{prod.title|termtext:2}}</h5>
+                  <div class="flex justify-between items-center">
+                    <span>{{prod.price}} EGP </span>
+                    <div class="flex items-center">
+                      <i class="fas fa-star text-yellow-300"></i>
+                      <span class="text-gray-500">{{prod.ratingsAverage}}</span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <button (click)="addToCart(prod.id)" class=" bg-green-600 text-white rounded py-2 px-10 border w-[90%] mx-auto block hover:bg-green-900">Add To Cart</button>
+    </div>
+    }
+  </div>
+</section>
