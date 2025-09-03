@@ -1,9 +1,10 @@
-import { Component, computed, inject, input, OnInit, Renderer2, Signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, computed, inject, input, OnInit, Renderer2, Signal, ViewChild } from '@angular/core';
+import { NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/myTranslate/my-translate.service';
 import { CartService } from '../../core/services/cart/cart.service';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,10 @@ import { CartService } from '../../core/services/cart/cart.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
+
+  constructor(private renderer: Renderer2 ) { }
+
+
   isLogin =input<boolean>(true);
   readonly authService = inject(AuthService);
   private readonly myTranslateService =inject(MyTranslateService);
@@ -19,7 +24,7 @@ export class NavbarComponent implements OnInit {
   private readonly cartService =inject(CartService);
 
   countNum:Signal<number>=computed(  ()=> this.cartService.cartCount()  );
-  constructor(private renderer: Renderer2) {}
+
 
   ngOnInit(): void {
 

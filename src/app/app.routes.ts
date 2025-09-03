@@ -3,6 +3,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { authGuard } from './core/guards/auth.guard';
 import { logedGuard } from './core/guards/loged.guard';
+import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
