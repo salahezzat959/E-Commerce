@@ -13,6 +13,42 @@
     "loginNow":"Login Now",
     "email":"Email",
     "password":"Password",
-    "signin":"SignIn"
+    "signin":"SignIn",
+    "reset" :"Reset",
+    "forgetpassword":"Forget Password",
+        "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email",
+      "passwordRequired": "Password is required",
+      "passwordInvalid": "Enter a valid password"
+    }
+  },
+   "register": {
+    "registerNow": "Register Now",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "rePassword": "Re-enter Password",
+    "phone": "Phone",
+    "signup": "Sign Up",
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email",
+      "passwordRequired": "Password is required",
+      "passwordInvalid": "Password must meet the required format",
+      "rePasswordRequired": "Re-enter password is required",
+      "rePasswordMismatch": "Passwords do not match",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Enter a valid phone number"
+    }
+  },
+    "footer": {
+    "getAppTitle": "Get The FreshCart App",
+    "getAppDescription": "We will send you a link. Open it on your phone to download the app.",
+    "emailPlaceholder": "Email",
+    "shareAppLink": "Share App Link",
+    "paymentPartners": "Payment partners",
+    "getDeliveries": "Get Deliveries with FreshCart"
   }
 }
